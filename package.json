@@ -1,6 +1,6 @@
 {
   "name": "namelix-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate business company names based on keywords via Namelix.",
   "publishConfig": {
     "access": "public"
