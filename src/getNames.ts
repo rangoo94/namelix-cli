@@ -57,7 +57,7 @@ export async function getNames(keywords: string[], options?: Partial<GetNamesOpt
   // Configure
   const onNext = options?.onNext ?? noop;
   const limit = options?.limit ?? 5000;
-  const seed = Math.round(Math.random() * 1e10);
+  const seed = Math.round(Math.random() * 1e9);
 
   // Set-up state
   const results: string[] = [];
