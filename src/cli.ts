@@ -59,8 +59,6 @@ program
       return program.outputHelp();
     }
 
-    // Validate
-
     // Set up progress bar
     const bar = new ProgressBar(cyan(':bar :percent (:current/:total) [eta: :etas | took: :elapseds]'), {
       total: options.limit,
