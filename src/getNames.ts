@@ -47,6 +47,9 @@ async function loadPage(keywords: string[], page: number, seed: number, options?
       num: 10,
     },
   });
+  if (body === 'error') {
+    throw new Error('Something went wrong with this query. Please try to modify your criteria.');
+  }
   return JSON.parse(body).map((x: any) => x.title.toLowerCase().replace(/\..+$/, ''));
 }
 

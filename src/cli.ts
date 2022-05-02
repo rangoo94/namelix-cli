@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import ProgressBar = require('progress');
 import { program, Option } from 'commander';
-import { cyan } from 'chalk';
+import { cyan, red } from 'chalk';
 import { getNames, NameRandomness, NameStyle } from './getNames';
 
 // Build helpers
@@ -71,15 +71,20 @@ program
     });
 
     // Start crawling
-    await getNames(keywords, {
-      ...options,
-      onNext: (name) => {
-        clearLine();
-        process.stdout.write(`${name}\n`);
-        bar.tick(1);
-        bar.render(undefined, true);
-      },
-    });
+    try {
+      await getNames(keywords, {
+        ...options,
+        onNext: (name) => {
+          clearLine();
+          process.stdout.write(`${name}\n`);
+          bar.tick(1);
+          bar.render(undefined, true);
+        },
+      });
+    } catch (error: any) {
+      process.stderr.write(red(`Error: ${error.message}\n`));
+      process.exit(1);
+    }
   })
   .showHelpAfterError(true);
 
